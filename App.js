@@ -22,10 +22,19 @@ function Sine() {
   )
 }
 
-// Plot an interactive line rfunction
+// Plot an interactive linear chart
 function LineChart() {
   const point1 = useMovablePoint([0, 0])
-  const point2 = useMovablePoint([2, 2])
+  const point2 = useMovablePoint([3, 3])
+  const decimals = 1;
+
+  function ROI_function(x, y) {
+    if (x > 3 && y > 3 ) {
+      return "High ROI"
+    } else {
+      return "Low ROI"
+    }
+  }
 
   return (
 
@@ -40,11 +49,21 @@ function LineChart() {
       <Text
         x={point2.x}
         y={point2.y}
+        attach="s"
+        attachDistance={30}
+        size={16}
+      >
+        {ROI_function(point2.y, point2.x)}
+      </Text>
+
+      <Text
+        x={point2.x}
+        y={point2.y}
         attach="w"
         attachDistance={20}
         size={20}
       >
-        ({point2.x.toFixed(2)}, {point2.y.toFixed(2)})
+        ({point2.x.toFixed(decimals)}, {point2.y.toFixed(decimals)})
       </Text>
       <Text
         x={point2.x}
@@ -53,7 +72,7 @@ function LineChart() {
         attachDistance={20}
         size={20}
       >
-        ({point2.x.toFixed(3)}, {point2.y.toFixed(3)})
+        ({point2.x.toFixed(decimals)}, {point2.y.toFixed(decimals)})
       </Text>
       {point2.element}
 
