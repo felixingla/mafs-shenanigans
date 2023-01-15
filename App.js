@@ -29,20 +29,28 @@ function LineChart() {
   const decimals = 1;
 
   function ROI_function(x, y) {
-    if (x > 3 && y > 3 ) {
-      return "High ROI"
+    if (x > 0 && y > 3 ) {
+      let ROI = "High ROI"
+      return ROI
+    } else if (x > 0 && y > 1){
+      let ROI = "Mid ROI"
+      return ROI
     } else {
-      return "Low ROI"
+      let ROI = "Low ROI"
+      
+      return ROI
     }
   }
 
   return (
 
-    <Mafs viewBox={{ x: [-1, 1], y: [-1, 1], padding: 4 }}>
-      <CartesianCoordinates />
+    <Mafs viewBox={{ x: [-1, 1], y: [-1, 2], padding: 3 }}>
+      <CartesianCoordinates 
+      />
       <Line.Segment
         point1={point1.point}
         point2={point2.point}
+        color="red"
       />
       {point2.element}
       
@@ -53,28 +61,38 @@ function LineChart() {
         attachDistance={30}
         size={16}
       >
-        {ROI_function(point2.y, point2.x)}
+        {ROI_function(point2.x, point2.y)}
       </Text>
 
       <Text
         x={point2.x}
         y={point2.y}
-        attach="w"
-        attachDistance={20}
-        size={20}
-      >
-        ({point2.x.toFixed(decimals)}, {point2.y.toFixed(decimals)})
-      </Text>
-      <Text
-        x={point2.x}
-        y={point2.y}
         attach="e"
         attachDistance={20}
-        size={20}
+        size={16}
       >
         ({point2.x.toFixed(decimals)}, {point2.y.toFixed(decimals)})
       </Text>
-      {point2.element}
+
+    <Text
+      x={0}
+      y={4}
+      size={16}
+      attach="w"
+      attachDistance={10}
+    >
+      Return
+    </Text>
+
+    <Text
+      x={4}
+      y={0}
+      size={16}
+      attach="n"
+      attachDistance={20}
+    >
+      Investment
+    </Text>
 
     </Mafs>
     
