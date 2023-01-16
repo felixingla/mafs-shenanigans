@@ -28,7 +28,8 @@ function LineChart() {
   const point2 = useMovablePoint([3, 3])
   const decimals = 1;
 
-  function ROI_function(x, y) {
+
+  function ROI_level(x, y) {
     if (x > 0 && y > 3 ) {
       let ROI = "High ROI"
       return ROI
@@ -37,8 +38,20 @@ function LineChart() {
       return ROI
     } else {
       let ROI = "Low ROI"
-      
       return ROI
+    }
+  }
+
+    function ROI_color(x, y) {
+    if (x > 0 && y > 3 ) {
+      let color = "green"
+      return color
+    } else if (x > 0 && y > 1){
+      let color = "yellow"
+      return color
+    } else {
+      let color = "red"
+      return color
     }
   }
 
@@ -50,18 +63,19 @@ function LineChart() {
       <Line.Segment
         point1={point1.point}
         point2={point2.point}
-        color="red"
+        
       />
       {point2.element}
-      
+
       <Text
         x={point2.x}
         y={point2.y}
         attach="s"
         attachDistance={30}
         size={16}
+        color={ROI_color(point2.x, point2.y)}
       >
-        {ROI_function(point2.x, point2.y)}
+        {ROI_level(point2.x, point2.y)}
       </Text>
 
       <Text
