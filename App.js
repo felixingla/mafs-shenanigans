@@ -30,10 +30,10 @@ function LineChart() {
 
 
   function ROI_level(x, y) {
-    if (x > 0 && y > 3 ) {
+    if (y > 2*x) {
       let ROI = "High ROI"
       return ROI
-    } else if (x > 0 && y > 1){
+    } else if (y < 2*x && y > 0.5*x){
       let ROI = "Mid ROI"
       return ROI
     } else {
@@ -43,10 +43,10 @@ function LineChart() {
   }
 
     function ROI_color(x, y) {
-    if (x > 0 && y > 3 ) {
+    if (y > 2*x) {
       let color = "green"
       return color
-    } else if (x > 0 && y > 1){
+    } else if (y < 2*x && y > 0.5*x){
       let color = "yellow"
       return color
     } else {
@@ -63,7 +63,8 @@ function LineChart() {
       <Line.Segment
         point1={point1.point}
         point2={point2.point}
-        
+        color={ROI_color(point2.x, point2.y)}
+
       />
       {point2.element}
 
