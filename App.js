@@ -22,8 +22,8 @@ function Sine() {
   )
 }
 
-// Plot an interactive linear chart
-function LineChart() {
+// Plot an interactive linear chart for ROI 
+function ROILineChart() {
   const point1 = useMovablePoint([0, 0])
   const point2 = useMovablePoint([3, 3])
   const decimals = 1;
@@ -114,15 +114,24 @@ function LineChart() {
   )
 }
 
+function writeInputToDiv() {
+  var input = prompt("Please enter your input:");
+  document.getElementById("output").innerHTML = input;
+<button onclick="writeInputToDiv()">Write Input</button>
+
+  
+}
+
 
 function App() {
+  
+  
   return (
     <div>
-      
-        <LineChart />
-
+    <writeInputToDiv />
     </div>
   );
+  
 }
 
 export default App;
